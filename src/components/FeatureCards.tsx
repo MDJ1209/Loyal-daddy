@@ -1,3 +1,4 @@
+import { motion } from "framer-motion";
 import cardChickens from "@/assets/card-chickens.jpg";
 import cardNutrition from "@/assets/card-nutrition.jpg";
 import cardIngredients from "@/assets/card-ingredients.jpg";
@@ -20,35 +21,71 @@ const features = [
   },
 ];
 
+const cardVariants = {
+  hidden: { opacity: 0, y: 60, scale: 0.95 },
+  visible: (i: number) => ({
+    opacity: 1,
+    y: 0,
+    scale: 1,
+    transition: {
+      duration: 0.7,
+      delay: i * 0.2,
+      ease: "easeOut" as const,
+    },
+  }),
+};
+
 const FeatureCards = () => {
   return (
     <section className="py-32 relative">
       <div className="container mx-auto px-6">
-        <div className="text-center mb-16">
+        <motion.div
+          className="text-center mb-16"
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-100px" }}
+          transition={{ duration: 0.7 }}
+        >
           <h2 className="text-4xl md:text-5xl font-display font-bold text-foreground mb-4">
             Our Commitment to Quality
           </h2>
           <div className="w-16 h-1 bg-secondary mx-auto rounded-full" />
-        </div>
+        </motion.div>
 
         <div className="grid md:grid-cols-3 gap-8">
           {features.map((feature, i) => (
-            <div
+            <motion.div
               key={feature.title}
-              className="group rounded-2xl bg-card card-border overflow-hidden hover:shadow-lg hover:shadow-primary/10 transition-all duration-500 hover:-translate-y-2"
+              custom={i}
+              variants={cardVariants}
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true, margin: "-80px" }}
+              whileHover={{ y: -12, transition: { duration: 0.3 } }}
+              className="group rounded-2xl bg-card card-border overflow-hidden cursor-pointer"
+              style={{
+                boxShadow: "0 0 0 0 hsl(145 43% 21% / 0)",
+                transition: "box-shadow 0.5s ease",
+              }}
+              onMouseEnter={(e) => {
+                (e.currentTarget as HTMLElement).style.boxShadow = "0 20px 60px -15px hsl(145 43% 21% / 0.25)";
+              }}
+              onMouseLeave={(e) => {
+                (e.currentTarget as HTMLElement).style.boxShadow = "0 0 0 0 hsl(145 43% 21% / 0)";
+              }}
             >
               <div className="aspect-[4/3] overflow-hidden">
                 <img
                   src={feature.image}
                   alt={feature.title}
-                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+                  className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700 ease-out"
                 />
               </div>
               <div className="p-6">
                 <h3 className="font-display font-bold text-lg text-foreground mb-2">{feature.title}</h3>
                 <p className="text-muted-foreground text-sm leading-relaxed">{feature.description}</p>
               </div>
-            </div>
+            </motion.div>
           ))}
         </div>
       </div>

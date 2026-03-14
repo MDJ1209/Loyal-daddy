@@ -1,9 +1,16 @@
+import { motion } from "framer-motion";
+
 const CtaSection = () => {
   return (
     <section className="py-32 relative">
       <div className="container mx-auto px-6">
-        <div className="relative rounded-3xl bg-gradient-to-br from-primary/40 to-primary/10 border border-primary/20 px-8 py-20 md:px-16 text-center overflow-hidden">
-          {/* Glow */}
+        <motion.div
+          className="relative rounded-3xl bg-gradient-to-br from-primary/40 to-primary/10 border border-primary/20 px-8 py-20 md:px-16 text-center overflow-hidden"
+          initial={{ opacity: 0, y: 40, scale: 0.97 }}
+          whileInView={{ opacity: 1, y: 0, scale: 1 }}
+          viewport={{ once: true, margin: "-80px" }}
+          transition={{ duration: 0.8, ease: "easeOut" }}
+        >
           <div className="absolute top-0 left-1/2 -translate-x-1/2 w-96 h-96 bg-secondary/10 rounded-full blur-[100px] pointer-events-none" />
 
           <h2 className="text-4xl md:text-5xl font-display font-bold text-foreground mb-6 relative">
@@ -20,7 +27,7 @@ const CtaSection = () => {
               Contact a Nutritionist
             </button>
           </div>
-        </div>
+        </motion.div>
       </div>
     </section>
   );
