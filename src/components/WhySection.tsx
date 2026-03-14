@@ -1,3 +1,4 @@
+import { motion } from "framer-motion";
 import whyFarm from "@/assets/why-farm.jpg";
 import whyNutrition from "@/assets/why-nutrition.jpg";
 import whyDogHealth from "@/assets/why-dog-health.jpg";
@@ -27,14 +28,20 @@ const WhySection = () => {
   return (
     <section className="py-32 relative">
       <div className="container mx-auto px-6">
-        <div className="text-center mb-20">
+        <motion.div
+          className="text-center mb-20"
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-100px" }}
+          transition={{ duration: 0.7 }}
+        >
           <h2 className="text-4xl md:text-5xl font-display font-bold text-foreground mb-4">
             Why We Raise Our Own
           </h2>
           <p className="text-secondary italic text-lg">
             "The shortest path from farm to bowl is the most honest one."
           </p>
-        </div>
+        </motion.div>
 
         <div className="space-y-32">
           {sections.map((section, i) => (
@@ -42,12 +49,24 @@ const WhySection = () => {
               key={section.number}
               className={`flex flex-col ${i % 2 === 0 ? "lg:flex-row" : "lg:flex-row-reverse"} gap-12 items-center`}
             >
-              <div className="lg:w-1/2 space-y-4">
+              <motion.div
+                className="lg:w-1/2 space-y-4"
+                initial={{ opacity: 0, x: i % 2 === 0 ? -50 : 50 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true, margin: "-80px" }}
+                transition={{ duration: 0.8, ease: "easeOut" }}
+              >
                 <span className="text-5xl font-display font-bold text-secondary/40">{section.number}</span>
                 <h3 className="text-3xl font-display font-bold text-foreground">{section.title}</h3>
                 <p className="text-muted-foreground text-lg leading-relaxed max-w-lg">{section.text}</p>
-              </div>
-              <div className="lg:w-1/2">
+              </motion.div>
+              <motion.div
+                className="lg:w-1/2"
+                initial={{ opacity: 0, x: i % 2 === 0 ? 50 : -50, scale: 0.95 }}
+                whileInView={{ opacity: 1, x: 0, scale: 1 }}
+                viewport={{ once: true, margin: "-80px" }}
+                transition={{ duration: 0.8, delay: 0.15, ease: "easeOut" }}
+              >
                 <div className="rounded-2xl overflow-hidden card-border">
                   <img
                     src={section.image}
@@ -55,7 +74,7 @@ const WhySection = () => {
                     className="w-full h-auto object-cover"
                   />
                 </div>
-              </div>
+              </motion.div>
             </div>
           ))}
         </div>
