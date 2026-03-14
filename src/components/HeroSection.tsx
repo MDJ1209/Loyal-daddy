@@ -61,11 +61,11 @@ const HeroSection = () => {
         {/* Right - Floating Farm */}
         <div className="relative flex items-center justify-center animate-fade-in-up-delay-1">
           {/* Glow behind island */}
-          <div className="absolute w-[500px] h-[500px] bg-primary/15 rounded-full blur-[100px] pointer-events-none" />
+          <div className="absolute w-[600px] h-[600px] bg-primary/20 rounded-full blur-[120px] pointer-events-none" />
           <img
             src={floatingFarm}
-            alt="Loyal-Daddy floating family farm with black chickens and green pastures"
-            className="relative w-full max-w-lg xl:max-w-xl animate-float drop-shadow-2xl"
+            alt="Loyal-Daddy floating family farm with black chickens and green pastures at night"
+            className="relative w-full max-w-xl xl:max-w-2xl animate-float drop-shadow-2xl"
           />
         </div>
       </div>
