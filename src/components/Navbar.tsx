@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Menu, X, Leaf } from "lucide-react";
+import { Menu, X, PawPrint } from "lucide-react";
 
 const Navbar = () => {
   const [mobileOpen, setMobileOpen] = useState(false);
@@ -10,7 +10,7 @@ const Navbar = () => {
       <div className="container mx-auto px-6 py-4 flex items-center justify-between">
         <div className="flex items-center gap-2">
           <div className="relative w-8 h-8 flex items-center justify-center rounded-full bg-primary">
-            <Leaf className="w-4 h-4 text-primary-foreground" />
+            <PawPrint className="w-4 h-4 text-primary-foreground" />
           </div>
           <span className="font-display font-bold text-xl text-foreground">Loyal-Daddy</span>
         </div>
