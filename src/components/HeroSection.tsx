@@ -1,20 +1,20 @@
 import { ShoppingBag, TreePine } from "lucide-react";
 import { motion } from "framer-motion";
-import heroFarmBg from "@/assets/hero-farm-bg.jpg";
+import heroFarm from "@/assets/hero-farm-blend.png";
 
 const HeroSection = () => {
   return (
-    <section className="relative min-h-screen flex items-center overflow-hidden pt-20">
-      {/* Full-bleed hero background image */}
-      <div className="absolute inset-0 z-0">
-        <img
-          src={heroFarmBg}
-          alt="Countryside family farm at golden hour with chickens"
-          className="w-full h-full object-cover object-center"
+    <section className="relative min-h-screen flex items-center overflow-hidden pt-20 bg-background">
+      {/* Floating farm image — right side, full brightness */}
+      <div className="absolute inset-y-0 right-0 w-[65%] z-0 pointer-events-none">
+        <motion.img
+          src={heroFarm}
+          alt="Floating family farm island with chickens"
+          className="w-full h-full object-contain object-right"
+          initial={{ opacity: 0, x: 40 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ duration: 1.2, ease: "easeOut" }}
         />
-        {/* Gradient overlays to blend image into white bg */}
-        <div className="absolute inset-0 bg-gradient-to-r from-background/90 via-background/40 to-transparent" />
-        <div className="absolute bottom-0 left-0 right-0 h-24 bg-gradient-to-t from-background to-transparent" />
       </div>
 
       <div className="container mx-auto px-6 relative z-10">
