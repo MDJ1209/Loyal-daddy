@@ -6,7 +6,7 @@ const HeroSection = () => {
   return (
     <section className="relative min-h-screen flex items-center overflow-hidden pt-20 bg-background">
       {/* Floating farm image — right side, full brightness */}
-      <div className="absolute inset-y-0 right-0 w-[65%] z-0 pointer-events-none">
+      <div className="absolute inset-y-0 -right-10 w-[75%] z-0 pointer-events-none">
         <motion.img
           src={heroFarm}
           alt="Floating family farm island with chickens"
