@@ -14,8 +14,10 @@ export default {
     },
     extend: {
       fontFamily: {
-        display: ["Satoshi", "Inter", "system-ui", "sans-serif"],
-        body: ["Inter", "system-ui", "sans-serif"],
+        display: ["Playfair Display", "serif"],
+        body: ["DM Sans", "sans-serif"],
+        hero: ["Smooch Sans", "sans-serif"],
+        cursive: ["Satisfy", "cursive"],
       },
       colors: {
         border: "hsl(var(--border))",
@@ -25,9 +27,7 @@ export default {
         foreground: "hsl(var(--foreground))",
         cream: "hsl(var(--cream))",
         forest: "hsl(var(--forest))",
-        grass: "hsl(var(--grass))",
-        charcoal: "hsl(var(--charcoal))",
-        "deep-black": "hsl(var(--deep-black))",
+        earth: "hsl(var(--earth))",
         primary: {
           DEFAULT: "hsl(var(--primary))",
           foreground: "hsl(var(--primary-foreground))",

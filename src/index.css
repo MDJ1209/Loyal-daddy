@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Satisfy&display=swap');
 
 @tailwind base;
 @tailwind components;
@@ -7,49 +7,51 @@
 @layer base {
   :root {
     --background: 0 0% 100%;
-    --foreground: 0 0% 10%;
+    --foreground: 145 43% 10%;
 
-    --card: 0 0% 98%;
-    --card-foreground: 0 0% 10%;
+    --card: 0 0% 100%;
+    --card-foreground: 145 43% 10%;
 
-    --popover: 0 0% 98%;
-    --popover-foreground: 0 0% 10%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 145 43% 10%;
 
-    --primary: 145 43% 28%;
+    --primary: 145 43% 20%;
     --primary-foreground: 0 0% 100%;
 
-    --secondary: 103 49% 40%;
+    --secondary: 30 20% 40%;
     --secondary-foreground: 0 0% 100%;
 
-    --muted: 0 0% 95%;
-    --muted-foreground: 0 0% 45%;
+    --muted: 0 0% 96%;
+    --muted-foreground: 145 15% 40%;
 
-    --accent: 103 49% 40%;
+    --accent: 145 43% 25%;
     --accent-foreground: 0 0% 100%;
 
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 0 0% 100%;
 
-    --border: 0 0% 0% / 0.08;
-    --input: 0 0% 0% / 0.08;
-    --ring: 145 43% 28%;
+    --border: 145 20% 90%;
+    --input: 145 20% 90%;
+    --ring: 145 43% 20%;
 
-    --radius: 0.75rem;
+    --radius: 0rem;
 
-    --cream: 40 30% 97%;
-    --forest: 145 43% 28%;
-    --grass: 103 49% 40%;
-    --charcoal: 0 0% 15%;
-    --deep-black: 0 0% 10%;
+    --cream: 0 0% 100%;
+    --forest: 145 43% 20%;
+    --earth: 30 20% 40%;
+  }
 
-    --sidebar-background: 0 0% 98%;
-    --sidebar-foreground: 0 0% 10%;
-    --sidebar-primary: 145 43% 28%;
-    --sidebar-primary-foreground: 0 0% 100%;
-    --sidebar-accent: 0 0% 95%;
-    --sidebar-accent-foreground: 0 0% 10%;
-    --sidebar-border: 0 0% 90%;
-    --sidebar-ring: 145 43% 28%;
+  body::before {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url("https://grainy-gradients.vercel.app/noise.svg");
+    opacity: 0.02;
+    pointer-events: none;
+    z-index: 9999;
   }
 }
 
@@ -58,18 +60,67 @@
     @apply border-border;
   }
 
-  body {
-    @apply bg-background text-foreground font-body antialiased;
+  html {
+    scroll-behavior: smooth;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    overflow-x: hidden;
   }
 
-  h1, h2, h3, h4, h5, h6 {
-    @apply font-display;
+  body {
+    @apply bg-background text-foreground font-body antialiased;
+    overflow-x: hidden;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    @apply font-display tracking-tight text-forest;
+  }
+}
+
+@layer components {
+  .btn-brutal {
+    @apply bg-forest text-white font-body px-8 py-4 font-black text-[18px] border-[3px] border-black rounded-[0.4em] transition-all cursor-pointer inline-flex items-center justify-center;
+    box-shadow: 0.1em 0.1em 0px black;
+  }
+
+  .btn-brutal:hover {
+    @apply -translate-x-[0.05em] -translate-y-[0.05em] bg-black text-white;
+    box-shadow: 0.15em 0.15em 0px black;
+  }
+
+  .btn-brutal:active {
+    @apply translate-x-[0.05em] translate-y-[0.05em];
+    box-shadow: 0.05em 0.05em 0px black;
+  }
+
+  .btn-brutal-secondary {
+    @apply bg-white text-forest font-body px-8 py-4 font-black text-[18px] border-[3px] border-black rounded-[0.4em] transition-all cursor-pointer inline-flex items-center justify-center;
+    box-shadow: 0.1em 0.1em 0px black;
+  }
+
+  .btn-brutal-secondary:hover {
+    @apply -translate-x-[0.05em] -translate-y-[0.05em] bg-forest text-white;
+    box-shadow: 0.15em 0.15em 0px black;
+  }
+
+  .btn-brutal-secondary:active {
+    @apply translate-x-[0.05em] translate-y-[0.05em];
+    box-shadow: 0.05em 0.05em 0px black;
   }
 }
 
 @layer utilities {
+  .section-padding {
+    @apply py-20 md:py-32;
+  }
+
   .text-gradient {
-    @apply bg-clip-text text-transparent bg-gradient-to-r from-secondary to-primary;
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-forest to-earth;
   }
 
   .glow-green {
@@ -82,13 +133,27 @@
 }
 
 @keyframes float {
-  0%, 100% { transform: translateY(0px); }
-  50% { transform: translateY(-15px); }
+
+  0%,
+  100% {
+    transform: translateY(0px);
+  }
+
+  50% {
+    transform: translateY(-15px);
+  }
 }
 
 @keyframes fade-in-up {
-  0% { opacity: 0; transform: translateY(20px); }
-  100% { opacity: 1; transform: translateY(0); }
+  0% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 .animate-float {
@@ -108,3 +173,185 @@
   animation: fade-in-up 0.8s ease-out 0.4s forwards;
   opacity: 0;
 }
+
+/* Polaroid Stack Effect */
+.stack {
+  width: 90%;
+  max-width: 400px;
+  position: relative;
+  perspective: 1000px; /* Enable 3D perspective */
+}
+
+.stack-card {
+  width: 100%;
+  background-color: white;
+  border: 4px solid #1a1a1a;
+  padding: 16px;
+  padding-bottom: 56px; /* Space for the "Polaroid" bottom area */
+  position: relative;
+  transition: transform 0.6s cubic-bezier(0.23, 1, 0.32, 1);
+  z-index: 10;
+  box-shadow: 12px 12px 0px rgba(0,0,0,0.05);
+  box-sizing: border-box;
+  transform-origin: left center; /* For book opening effect */
+}
+
+.stack-card:before,
+.stack-card:after {
+  content: "";
+  display: block;
+  position: absolute;
+  top: -4px; /* Align with border */
+  left: -4px;
+  width: 100%;
+  height: 100%;
+  background-color: white;
+  border: 4px solid #1a1a1a;
+  z-index: -1;
+  transition: transform 0.8s cubic-bezier(0.23, 1, 0.32, 1);
+  transform-origin: center center;
+}
+
+/* Base stack positions */
+.stack-card:before {
+  transform: translateY(-4%) rotate(-5deg);
+}
+
+.stack-card:after {
+  transform: translateY(4%) rotate(5deg);
+}
+
+/* Hover "fan out" effect */
+.stack:hover .stack-card {
+  transform: rotateY(5deg) translateX(5px);
+}
+
+.stack:hover .stack-card:before {
+  transform: translateY(-8%) rotate(-12deg) translateX(-10px);
+}
+
+.stack:hover .stack-card:after {
+  transform: translateY(8%) rotate(12deg) translateX(10px);
+}
+
+.stack-image-wrapper {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  background-color: #f8f8f8;
+  border: 4px solid #1a1a1a;
+  overflow: hidden;
+  position: relative;
+  box-sizing: border-box;
+  display: block;
+}
+
+.stack-image-wrapper img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* Brutal Card Design - Adapted from Uiverse */
+.brutal-card {
+  width: 100%;
+  max-width: 1000px;
+  padding: 2.5rem;
+  background: #fff;
+  border: 5px solid #1a2f26;
+  box-shadow: 12px 12px 0 #1a2f26;
+  transition: transform 0.3s, box-shadow 0.3s;
+  position: relative;
+}
+
+.brutal-card:hover {
+  transform: translate(-5px, -5px);
+  box-shadow: 18px 18px 0 #1a2f26;
+}
+
+.brutal-card__title {
+  font-size: 28px;
+  font-weight: 900;
+  color: #1a2f26;
+  text-transform: uppercase;
+  margin-bottom: 1.2rem;
+  display: block;
+  position: relative;
+  overflow: hidden;
+  font-family: 'Playfair Display', serif;
+}
+
+.brutal-card__title::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 90%;
+  height: 4px;
+  background-color: #1a2f26;
+  transform: translateX(-100%);
+  transition: transform 0.3s;
+}
+
+.brutal-card:hover .brutal-card__title::after {
+  transform: translateX(0);
+}
+
+.brutal-card__content {
+  font-size: 1rem;
+  line-height: 1.6;
+  color: #1a2f26;
+  margin-bottom: 2rem;
+  font-family: 'DM Sans', sans-serif;
+}
+
+.brutal-card__button {
+  border: 4px solid #1a2f26;
+  background: #1a2f26;
+  color: #fff;
+  padding: 0.8rem 1.8rem;
+  font-size: 0.9rem;
+  font-weight: 900;
+  text-transform: uppercase;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.3s;
+  width: fit-content;
+}
+
+.brutal-card__button::before {
+  content: "OUR SOURCE";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 105%;
+  background-color: #5ad641;
+  color: #1a2f26;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transform: translateY(100%);
+  transition: transform 0.3s;
+}
+
+.brutal-card__button:hover::before {
+  transform: translateY(0);
+}
+
+.brutal-card__button:active {
+  transform: scale(0.95);
+}
+
+@keyframes brutal-glitch {
+  0% { transform: translate(2px, 2px); }
+  25% { transform: translate(-2px, -2px); }
+  50% { transform: translate(-2px, 2px); }
+  75% { transform: translate(2px, -2px); }
+  100% { transform: translate(2px, 2px); }
+}
+
+.brutal-glitch {
+  animation: brutal-glitch 0.3s infinite;
+}

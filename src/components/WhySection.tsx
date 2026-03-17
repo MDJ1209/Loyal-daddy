@@ -4,37 +4,82 @@ import whyNutrition from "@/assets/why-nutrition.jpg";
 import whyDogHealth from "@/assets/why-dog-health.jpg";
 
 const sections = [
-  { number: "01", title: "Full Control Over Quality", text: "By raising our own black country chickens, we control every variable. From the specific non-GMO seed they eat to the clean mountain water they drink, we ensure no toxins and industrial \"mystery meats\" ever enter the supply chain.", image: whyFarm },
-  { number: "02", title: "The Industrial vs. Natural Divide", text: "Most dog foods use \"meat meal\" sourced from massive industrial processing plants. We believe your dog deserves better. Our chickens live in the sunshine, resulting in meat that is higher in Omega-3s and vital minerals compared to factory-farmed alternatives.", image: whyNutrition },
-  { number: "03", title: "Scientific Health Benefits", text: "Our proprietary formula focuses on bioavailability. Because our ingredients are fresh, your dog's digestive system can actually absorb the nutrients rather than just passing them through. This leads to shinier coats, brighter eyes, and stable energy levels.", image: whyDogHealth },
+  {
+    label: "Quality Sourcing",
+    title: "The Purest Beginnings",
+    text: "Every piece of kibble starts on our own family farm. We control the soil, the seeds, and the life of every chicken. This closed-loop system ensures that what ends up in your dog's bowl is pure, powerful, and perfectly traceable.",
+    image: whyFarm,
+    bgColor: "bg-cream"
+  },
+  {
+    label: "Better Process",
+    title: "The 90-Day Slow Growing Difference",
+    text: "While industrial farms rush growth in 40 days, we let our chickens mature naturally over 90 days. This patience results in superior muscle development and a nutrient profile that commercial brands simply cannot replicate.",
+    image: whyNutrition,
+    bgColor: "bg-white"
+  },
+  { 
+    label: "Total Control", 
+    title: "From Our Soil to Your Door",
+    text: "By owning every step of the process—from seed to soil to selection—we eliminate the uncertainties of third-party supply chains. We grow our own grain, raise our own birds, and process them right here on the farm. Total control means total peace of mind for you, and thriving health for them.", 
+    image: whyDogHealth,
+    bgColor: "bg-cream"
+  },
 ];
 
 const WhySection = () => {
-  return (
-    <section className="py-32 relative">
-      <div className="container mx-auto px-6">
-        <motion.div className="text-center mb-20" initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, margin: "-100px" }} transition={{ duration: 0.7 }}>
-          <h2 className="text-4xl md:text-5xl font-display font-bold text-foreground mb-4">Why We Raise Our Own</h2>
-          <p className="text-primary italic text-lg">"The shortest path from farm to bowl is the most honest one."</p>
-        </motion.div>
+  const premiumEase = [0.23, 1, 0.32, 1];
 
-        <div className="space-y-32">
-          {sections.map((section, i) => (
-            <div key={section.number} className={`flex flex-col ${i % 2 === 0 ? "lg:flex-row" : "lg:flex-row-reverse"} gap-12 items-center`}>
-              <motion.div className="lg:w-1/2 space-y-4" initial={{ opacity: 0, x: i % 2 === 0 ? -50 : 50 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true, margin: "-80px" }} transition={{ duration: 0.8, ease: "easeOut" }}>
-                <span className="text-5xl font-display font-bold text-secondary/30">{section.number}</span>
-                <h3 className="text-3xl font-display font-bold text-foreground">{section.title}</h3>
-                <p className="text-muted-foreground text-lg leading-relaxed max-w-lg">{section.text}</p>
+  return (
+    <section id="our-farm">
+      {sections.map((section, i) => (
+        <div key={section.title} className={`${section.bgColor} section-padding overflow-hidden`}>
+          <div className="container mx-auto px-6 max-w-7xl">
+            <div className={`flex flex-col items-center gap-12 md:gap-24 ${i % 2 === 1 ? "lg:flex-row-reverse" : "lg:flex-row"}`}>
+              <motion.div 
+                className="lg:w-1/2 space-y-8" 
+                initial={{ opacity: 0, y: 50 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: "-100px" }}
+                transition={{ duration: 1, ease: [0.23, 1, 0.32, 1] as any }}
+              >
+                <div className="space-y-4">
+                  <span className="text-[11px] uppercase tracking-[0.4em] font-black text-forest/40 block">
+                    {section.label}
+                  </span>
+                  <h2 className="text-4xl md:text-5xl lg:text-7xl font-display font-bold leading-[1.1] text-forest italic">
+                    {section.title}
+                  </h2>
+                </div>
+                <p className="text-black/80 text-lg leading-relaxed font-body max-w-xl">
+                  {section.text}
+                </p>
+                <div className="pt-4">
+                  <button className="btn-brutal text-[14px]">
+                    Learn about our soil
+                  </button>
+                </div>
               </motion.div>
-              <motion.div className="lg:w-1/2" initial={{ opacity: 0, x: i % 2 === 0 ? 50 : -50, scale: 0.95 }} whileInView={{ opacity: 1, x: 0, scale: 1 }} viewport={{ once: true, margin: "-80px" }} transition={{ duration: 0.8, delay: 0.15, ease: "easeOut" }}>
-                <div className="rounded-2xl overflow-hidden border border-border shadow-sm">
-                  <img src={section.image} alt={section.title} className="w-full h-auto object-cover" />
+              
+              <motion.div 
+                className={`lg:w-1/2 w-full flex justify-center ${i % 2 === 1 ? "lg:justify-start" : "lg:justify-end"}`} 
+                initial={{ opacity: 0, scale: 0.9, rotate: i % 2 === 1 ? -5 : 5 }}
+                whileInView={{ opacity: 1, scale: 1, rotate: 0 }}
+                viewport={{ once: true, margin: "-100px" }}
+                transition={{ duration: 1.2, ease: [0.23, 1, 0.32, 1] as any }}
+              >
+                <div className="stack transform-gpu">
+                  <div className="stack-card">
+                    <div className="stack-image-wrapper shadow-2xl">
+                      <img src={section.image} alt={section.title} className="w-full h-full object-cover" />
+                    </div>
+                  </div>
                 </div>
               </motion.div>
             </div>
-          ))}
+          </div>
         </div>
-      </div>
+      ))}
     </section>
   );
 };

@@ -1,73 +1,84 @@
 import { motion } from "framer-motion";
-import { ShoppingBag, Star, Leaf, Heart } from "lucide-react";
-import productBag from "@/assets/product-bag.png";
+import productImg from "@/assets/product-bag.png";
+
+const ingredients = [
+  { name: "Family Raised Chicken", desc: "Triple growth standard" },
+  { name: "Farm Processed Grain", desc: "No commercial fillers" },
+  { name: "Holistic Vitamins", desc: "Scientifically balanced" },
+  { name: "Natural Minerals", desc: "Source of vitality" },
+  { name: "Digestive Enzymes", desc: "Optimized absorption" },
+  { name: "Omega Fatty Acids", desc: "For coat and skin" },
+];
 
 const ProductSection = () => {
   return (
-    <section className="py-24 bg-background relative overflow-hidden">
-      <div className="container mx-auto px-6">
-        <div className="grid md:grid-cols-2 gap-16 items-center">
-          {/* Product Image */}
-          <motion.div
-            className="flex justify-center"
-            initial={{ opacity: 0, y: 40 }}
-            whileInView={{ opacity: 1, y: 0 }}
+    <section className="section-padding bg-white overflow-hidden" id="products">
+      <div className="container mx-auto px-6 max-w-7xl">
+        <div className="flex flex-col lg:flex-row items-center gap-12 lg:gap-24">
+          {/* Image Container */}
+          <motion.div 
+            className="w-full lg:w-1/2 relative flex justify-center lg:block"
+            initial={{ opacity: 0, x: -30 }}
+            whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8 }}
           >
-            <img
-              src={productBag}
-              alt="Loyal-Daddy Farm Raised Chicken Recipe dog food bag"
-              className="w-full max-w-md drop-shadow-2xl"
-            />
+            <div className="relative w-full max-w-[400px] lg:max-w-none">
+              <div className="absolute top-4 left-4 bg-primary text-primary-foreground text-[10px] uppercase tracking-[0.3em] font-bold px-4 py-2 z-10">
+                80% Protein
+              </div>
+              <img 
+                src={productImg} 
+                alt="Premium Farmhouse Dog Fare" 
+                className="w-full h-auto object-contain drop-shadow-2xl"
+              />
+            </div>
           </motion.div>
 
-          {/* Product Info */}
-          <motion.div
-            className="space-y-6"
-            initial={{ opacity: 0, y: 40 }}
-            whileInView={{ opacity: 1, y: 0 }}
+          {/* Content Container */}
+          <motion.div 
+            className="w-full lg:w-1/2 space-y-8"
+            initial={{ opacity: 0, x: 30 }}
+            whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.8, delay: 0.2 }}
+            transition={{ duration: 0.8 }}
           >
-            <span className="text-xs font-semibold tracking-widest uppercase text-secondary">Our Flagship Product</span>
-            <h2 className="text-4xl md:text-5xl font-display font-bold text-foreground leading-tight">
-              Farm Raised
-              <br />
-              <span className="text-gradient">Chicken Recipe</span>
-            </h2>
-            <p className="text-muted-foreground text-lg leading-relaxed max-w-lg">
-              Made with 100% farm-raised chicken from our family farm. No fillers, no artificial preservatives — just real, wholesome nutrition your dog deserves.
-            </p>
-
-            <div className="flex items-center gap-1 pt-2">
-              {[1, 2, 3, 4, 5].map((i) => (
-                <Star key={i} className="w-5 h-5 fill-yellow-400 text-yellow-400" />
-              ))}
-              <span className="ml-2 text-sm text-muted-foreground">4.9/5 (2,300+ reviews)</span>
+            <div className="space-y-4">
+              <span className="text-[11px] uppercase tracking-[0.4em] font-extrabold text-forest/40 block">
+                The Gold Standard
+              </span>
+              <h2 className="text-3xl md:text-5xl lg:text-6xl font-display font-bold leading-[1.2] text-forest">
+                Farmhouse Dog Fare: <br className="md:hidden" />
+                <span className="italic text-forest/80">Pure Clean Nutrition</span>
+              </h2>
+              <p className="text-black/80 text-lg font-body leading-relaxed max-w-xl">
+                Elevate your dog's daily ritual with the only protein-first kibble grown, raised, and processed on a single family farm. Science-forward wellness meets honest country integrity.
+              </p>
             </div>
 
-            <div className="grid grid-cols-3 gap-4 pt-4">
-              {[
-                { icon: Leaf, label: "100% Natural" },
-                { icon: Heart, label: "Vet Approved" },
-                { icon: ShoppingBag, label: "Free Shipping" },
-              ].map(({ icon: Icon, label }) => (
-                <div key={label} className="flex flex-col items-center gap-2 p-4 rounded-xl bg-muted/50 border border-border">
-                  <Icon className="w-5 h-5 text-primary" />
-                  <span className="text-xs font-medium text-foreground">{label}</span>
-                </div>
-              ))}
-            </div>
-
-            <div className="flex items-center gap-6 pt-4">
-              <div>
-                <span className="text-3xl font-bold text-foreground">$49.99</span>
-                <span className="text-sm text-muted-foreground ml-2 line-through">$59.99</span>
+            <div className="space-y-6">
+              <h3 className="text-xs uppercase tracking-widest font-black text-forest/40">Key Ingredients</h3>
+              {/* Responsive Grid/Scroll */}
+              <div className="flex lg:grid lg:grid-cols-2 gap-4 overflow-x-auto pb-6 lg:pb-0 scrollbar-hide snap-x snap-mandatory scroll-smooth -mx-6 px-6 lg:mx-0 lg:px-0">
+                {ingredients.map((item) => (
+                  <div 
+                    key={item.name} 
+                    className="flex-shrink-0 w-[280px] lg:w-full p-6 border border-forest/10 bg-cream snap-center space-y-2 hover:bg-forest/5 transition-colors group cursor-default"
+                  >
+                    <h4 className="font-display font-bold text-lg text-forest group-hover:italic transition-all">
+                      {item.name}
+                    </h4>
+                    <p className="text-sm text-black/60 font-body leading-relaxed">
+                      {item.desc}
+                    </p>
+                  </div>
+                ))}
               </div>
-              <button className="flex items-center gap-2 px-7 py-3.5 rounded-full bg-primary text-primary-foreground font-medium hover:shadow-lg hover:shadow-primary/30 transition-all duration-500">
-                <ShoppingBag className="w-4 h-4" />
-                Add to Cart
+            </div>
+
+            <div className="pt-4">
+              <button className="btn-brutal w-full md:w-auto">
+                Purchase Now — $49.50
               </button>
             </div>
           </motion.div>
