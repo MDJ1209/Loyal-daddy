@@ -1,6 +1,14 @@
-# React Application
+# Loyal Daddy - Farmhouse Dog Fare
 
-This project was bootstrapped with Vite and React.
+A premium, high-integrity web application for farm-raised canine nutrition. Built with React, Vite, Tailwind CSS, and Framer Motion.
+
+---
+
+## 🚀 Git Management
+If you have cloned this repository and need to push it to your own new GitHub repo, please refer to the **[Git Transfer Guide](./GIT_TRANSFER_GUIDE.md)** for step-by-step instructions and troubleshooting.
+
+---
+
 
 ## Getting Started
 
