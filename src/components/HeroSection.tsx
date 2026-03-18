@@ -4,7 +4,7 @@ import heroFarm from "@/assets/hero-farm-blend.png";
 
 const HeroSection = () => {
   return (
-    <section className="relative min-h-screen flex items-center overflow-hidden pt-20 bg-cream">
+    <section className="relative min-h-screen flex items-center overflow-hidden pt-20 bg-background">
       {/* Floating farm image — optimized for mobile and desktop */}
       <div className="absolute inset-y-0 -right-20 w-[140%] md:w-[75%] z-0 pointer-events-none">
         <motion.img
@@ -51,7 +51,7 @@ const HeroSection = () => {
           <div className="pt-8 flex items-center gap-6">
             <div className="flex -space-x-3">
               {[1, 2, 3, 4].map((i) => (
-                <div key={i} className="w-10 h-10 rounded-full border-2 border-white bg-cream flex items-center justify-center overflow-hidden">
+                <div key={i} className="w-10 h-10 rounded-full border-2 border-white bg-background flex items-center justify-center overflow-hidden">
                   <img src={`https://i.pravatar.cc/100?img=${i + 10}`} alt="User" className="w-full h-full object-cover" />
                 </div>
               ))}

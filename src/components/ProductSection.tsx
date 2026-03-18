@@ -12,7 +12,7 @@ const ingredients = [
 
 const ProductSection = () => {
   return (
-    <section className="section-padding bg-white overflow-hidden" id="products">
+    <section className="pt-8 pb-20 md:pt-12 md:pb-32 bg-background overflow-hidden" id="products">
       <div className="container mx-auto px-6 max-w-7xl">
         <div className="flex flex-col lg:flex-row items-center gap-12 lg:gap-24">
           {/* Image Container */}
@@ -60,10 +60,14 @@ const ProductSection = () => {
               <h3 className="text-xs uppercase tracking-widest font-black text-forest/40">Key Ingredients</h3>
               {/* Responsive Grid/Scroll */}
               <div className="flex lg:grid lg:grid-cols-2 gap-4 overflow-x-auto pb-6 lg:pb-0 scrollbar-hide snap-x snap-mandatory scroll-smooth -mx-6 px-6 lg:mx-0 lg:px-0">
-                {ingredients.map((item) => (
-                  <div 
+                {ingredients.map((item, i) => (
+                  <motion.div 
                     key={item.name} 
                     className="flex-shrink-0 w-[280px] lg:w-full p-6 border border-forest/10 bg-cream snap-center space-y-2 hover:bg-forest/5 transition-colors group cursor-default"
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.5, delay: i * 0.08, ease: [0.23, 1, 0.32, 1] }}
                   >
                     <h4 className="font-display font-bold text-lg text-forest group-hover:italic transition-all">
                       {item.name}
@@ -71,7 +75,7 @@ const ProductSection = () => {
                     <p className="text-sm text-black/60 font-body leading-relaxed">
                       {item.desc}
                     </p>
-                  </div>
+                  </motion.div>
                 ))}
               </div>
             </div>

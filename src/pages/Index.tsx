@@ -1,9 +1,9 @@
 import Navbar from "@/components/Navbar";
 import HeroSection from "@/components/HeroSection";
-import SocialProof from "@/components/SocialProof";
-import FeatureCards from "@/components/FeatureCards";
+import PremiumFeature from "@/components/PremiumFeature";
+
 import ProductSection from "@/components/ProductSection";
-import WhySection from "@/components/WhySection";
+
 import CtaSection from "@/components/CtaSection";
 import Footer from "@/components/Footer";
 
@@ -12,9 +12,8 @@ const Index = () => {
     <div className="min-h-screen bg-background text-foreground overflow-x-hidden">
       <Navbar />
       <HeroSection />
-      <SocialProof />
-      <FeatureCards />
-      <WhySection />
+      <PremiumFeature />
+
       <ProductSection />
       <CtaSection />
       <Footer />

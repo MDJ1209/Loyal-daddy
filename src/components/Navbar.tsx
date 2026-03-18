@@ -26,7 +26,10 @@ const Navbar = () => {
 
   return (
     <>
-      <nav
+      <motion.nav
+        initial={{ opacity: 0, y: -20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.6, ease: [0.23, 1, 0.32, 1] }}
         className={`fixed left-0 right-0 z-50 transition-all duration-500 top-0 ${scrolled
           ? "bg-white/90 backdrop-blur-md shadow-sm border-b border-black/5 py-3"
           : "bg-transparent py-5"
@@ -97,7 +100,7 @@ const Navbar = () => {
             </motion.div>
           )}
         </AnimatePresence>
-      </nav>
+      </motion.nav>
     </>
   );
 };

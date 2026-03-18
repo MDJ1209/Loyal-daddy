@@ -88,7 +88,7 @@ const WhyUs = () => {
               <div className="space-y-4">
                 <span className="text-[11px] uppercase tracking-[0.3em] font-black text-forest/60">The Superior Source</span>
                 <h2 className="text-3xl md:text-5xl lg:text-6xl font-display font-bold leading-tight italic">
-                  The Significance of Black Chicken
+                  The Significance of Kadaknath
                 </h2>
               </div>
 
@@ -201,7 +201,7 @@ const WhyUs = () => {
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-[30vw] md:text-[20vw] font-display font-black text-white/[0.03] leading-none pointer-events-none select-none whitespace-nowrap italic">
           MANIFESTO
         </div>
-        
+
         <div className="container mx-auto px-6 max-w-7xl relative z-10">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-16">
             {[
@@ -251,7 +251,13 @@ const WhyUs = () => {
       {/* Call to Action */}
       <section className="py-24 md:py-40 bg-cream relative overflow-hidden text-center">
         <div className="container mx-auto px-6 relative z-10">
-          <div className="max-w-4xl mx-auto space-y-10 md:space-y-12">
+          <motion.div
+            className="max-w-4xl mx-auto space-y-10 md:space-y-12"
+            initial={{ opacity: 0, y: 40 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8, ease: [0.23, 1, 0.32, 1] }}
+          >
             <h2 className="text-4xl md:text-8xl font-display font-bold italic text-forest leading-tight">
               Ready for a<br />Cleaner Bowl?
             </h2>
@@ -260,7 +266,7 @@ const WhyUs = () => {
                 Shop Our Collection
               </button>
             </div>
-          </div>
+          </motion.div>
         </div>
       </section>
 

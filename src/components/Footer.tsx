@@ -1,15 +1,22 @@
 import { PawPrint, Instagram, Twitter, Facebook, ArrowRight } from "lucide-react";
+import { motion } from "framer-motion";
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer className="bg-white border-t border-forest/5 pt-32 pb-12" id="contact">
+    <footer className="bg-background border-t border-forest/5 pt-32 pb-12" id="contact">
       <div className="container mx-auto px-6 max-w-7xl">
         <div className="grid grid-cols-1 md:grid-cols-12 gap-16 md:gap-8 mb-24">
           
           {/* Brand Identity */}
-          <div className="md:col-span-4 space-y-8">
+          <motion.div
+            className="md:col-span-4 space-y-8"
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.7, ease: [0.23, 1, 0.32, 1] }}
+          >
             <div className="flex items-center gap-3">
               <div className="w-10 h-10 bg-forest rounded-full flex items-center justify-center">
                 <PawPrint className="w-6 h-6 text-white" />
@@ -32,10 +39,16 @@ const Footer = () => {
                 </a>
               ))}
             </div>
-          </div>
+          </motion.div>
           
           {/* Quick Links */}
-          <div className="md:col-span-2">
+          <motion.div
+            className="md:col-span-2"
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.7, delay: 0.1, ease: [0.23, 1, 0.32, 1] }}
+          >
             <h4 className="font-display font-bold mb-8 uppercase text-[12px] tracking-[0.4em] text-forest/40">Shop</h4>
             <ul className="space-y-4 font-body text-base text-black/80">
               {["Farmhouse Fare", "Clean Treats", "Wellness Bundles", "Farm Story"].map((link) => (
@@ -44,9 +57,15 @@ const Footer = () => {
                 </li>
               ))}
             </ul>
-          </div>
+          </motion.div>
           
-          <div className="md:col-span-2">
+          <motion.div
+            className="md:col-span-2"
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.7, delay: 0.2, ease: [0.23, 1, 0.32, 1] }}
+          >
             <h4 className="font-display font-bold mb-8 uppercase text-[12px] tracking-[0.4em] text-forest/40">Explore</h4>
             <ul className="space-y-4 font-body text-base text-black/80">
               {["Sustainability", "Process", "Community", "Journal"].map((link) => (
@@ -55,10 +74,16 @@ const Footer = () => {
                 </li>
               ))}
             </ul>
-          </div>
+          </motion.div>
           
           {/* Newsletter */}
-          <div className="md:col-span-4">
+          <motion.div
+            className="md:col-span-4"
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.7, delay: 0.3, ease: [0.23, 1, 0.32, 1] }}
+          >
             <h4 className="font-display font-bold mb-8 uppercase text-[12px] tracking-[0.4em] text-forest/40">The Journal</h4>
             <p className="text-black/70 text-base font-body mb-8">
               Join our journal for seasonal updates from the farm and canine wellness insights.
@@ -73,11 +98,17 @@ const Footer = () => {
                 <ArrowRight className="w-6 h-6" />
               </button>
             </form>
-          </div>
+          </motion.div>
         </div>
         
         {/* Bottom Bar */}
-        <div className="pt-12 border-t border-forest/5 flex flex-col md:flex-row justify-between items-center gap-8 text-[11px] uppercase tracking-widest font-black text-black/20">
+        <motion.div
+          className="pt-12 border-t border-forest/5 flex flex-col md:flex-row justify-between items-center gap-8 text-[11px] uppercase tracking-widest font-black text-black/20"
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.8, delay: 0.4 }}
+        >
           <div className="flex flex-col md:flex-row items-center gap-4 md:gap-12">
             <p>© {currentYear} Loyal Daddy Family Farm.</p>
             <div className="flex gap-8">
@@ -87,7 +118,7 @@ const Footer = () => {
             </div>
           </div>
           <p className="italic font-display lowercase opacity-60">From Soil to Bowl</p>
-        </div>
+        </motion.div>
       </div>
     </footer>
   );

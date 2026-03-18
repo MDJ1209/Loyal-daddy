@@ -30,7 +30,7 @@ const features = [
 
 const FeatureCards = () => {
   return (
-    <section className="pt-24 pb-20 md:pb-32 bg-cream border-y border-forest/5">
+    <section className="pt-24 pb-20 md:pb-32 bg-background border-y border-forest/5">
       <div className="container mx-auto px-6 max-w-7xl">
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
           {features.map((feature, i) => {
